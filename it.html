@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CS & IT Degree Directory Nepal (BSc CSIT / BCA / BIT) | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Nav -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-purple-600 rounded-lg flex items-center justify-center font-bold text-white">💻</div>
+        <a href="../index.html" class="font-extrabold text-xl text-white tracking-tight">Edu<span class="text-purple-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ CS & IT</span></a>
+      </div>
+      <nav class="hidden md:flex gap-4 text-xs font-semibold">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="engineering.html" class="text-slate-400 hover:text-white transition">Engineering</a>
+        <a href="medical.html" class="text-slate-400 hover:text-white transition">Medical</a>
+        <a href="management.html" class="text-slate-400 hover:text-white transition">Management</a>
+        <a href="it.html" class="text-purple-400 border-b-2 border-purple-500 pb-1">IT & CS</a>
+        <a href="law.html" class="text-slate-400 hover:text-white transition">Law</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
+    
+    <div>
+      <h1 class="text-3xl font-extrabold text-white">Computer Science & Information Technology Portal</h1>
+      <p class="text-slate-400 text-xs mt-1">Compare BSc CSIT, BCA, BIT, BE Computer, and UK University degrees in Nepal.</p>
+    </div>
+
+    <!-- IT Degree Decision Matrix -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 hover:border-purple-500/50 transition">
+        <span class="text-xs font-bold text-purple-400 bg-purple-500/10 px-2 py-0.5 rounded">Math & Theory Focus</span>
+        <h3 class="text-lg font-bold text-white">TU BSc CSIT</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">4-Year theory-intensive science degree requiring +2 Science with Math/Physics. High preference for software architecture and R&D.</p>
+        <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-300"><strong>Entrance:</strong> TU IOST Entrance Exam (100 Marks)</div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 hover:border-purple-500/50 transition">
+        <span class="text-xs font-bold text-blue-400 bg-blue-500/10 px-2 py-0.5 rounded">Any Stream Eligible</span>
+        <h3 class="text-lg font-bold text-white">TU / PU BCA & BIT</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Applications & software engineering oriented. Students from Management, Humanities, or Science can apply (+2 Pass minimum D+).</p>
+        <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-300"><strong>Entrance:</strong> TU FOHSS Entrance / University Test</div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-2 hover:border-purple-500/50 transition">
+        <span class="text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded">3-Year Industry Degree</span>
+        <h3 class="text-lg font-bold text-white">UK University IT Degrees</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">Offered by Islington, Softwarica, British College. Direct practical modules, no terminal exams, portfolio-based assessments.</p>
+        <div class="pt-3 border-t border-slate-800 text-[11px] text-slate-300"><strong>Duration:</strong> 3 Years (UK University Certificate)</div>
+      </div>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+      <div class="flex flex-wrap gap-2" id="itFilterContainer">
+        <button onclick="filterIt('all')" class="it-btn bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All IT Colleges</button>
+        <button onclick="filterIt('CSIT')" class="it-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">BSc CSIT Campuses</button>
+        <button onclick="filterIt('UK-Affiliated')" class="it-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">UK Affiliated Colleges</button>
+      </div>
+
+      <div class="w-full sm:w-64">
+        <input type="text" id="itSearch" onkeyup="searchItColleges()" placeholder="Search ASCOL, DWIT, Islington..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-purple-500">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="itGrid"></div>
+
+  </main>
+
+  <script>
+    const itColleges = [
+      {
+        name: "Amrit Science Campus (ASCOL)",
+        category: "CSIT",
+        location: "Lainchaur, Kathmandu",
+        courses: ["BSc CSIT"],
+        fees: "NRs. 3,50,000",
+        seats: 108,
+        image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+        desc: "Top government constituent campus under TU IOST with highest CSIT entrance score cutoff."
+      },
+      {
+        name: "Patan Multiple Campus",
+        category: "CSIT",
+        location: "Patan Dhoka, Lalitpur",
+        courses: ["BSc CSIT", "BCA"],
+        fees: "NRs. 3,80,000",
+        seats: 108,
+        image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80",
+        desc: "High demand public campus in Lalitpur with state of the art IT computer labs."
+      },
+      {
+        name: "Deerwalk Institute of Technology (DWIT)",
+        category: "CSIT",
+        location: "Siphal, Kathmandu",
+        courses: ["BSc CSIT", "BCA"],
+        fees: "NRs. 11,50,000",
+        seats: 60,
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+        desc: "Private IT college linked with Deerwalk Software company providing direct industry internships."
+      },
+      {
+        name: "Islington College",
+        category: "UK-Affiliated",
+        location: "Kamalpokhari, Kathmandu",
+        courses: ["BSc (Hons) Computing", "BSc IT & Cybersecurity"],
+        fees: "NRs. 13,50,000 - 15,00,000",
+        seats: 300,
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+        desc: "Affiliated with London Metropolitan University UK, pioneer in direct practical UK IT degrees."
+      },
+      {
+        name: "Softwarica College of IT & E-Commerce",
+        category: "UK-Affiliated",
+        location: "Dillibazar, Kathmandu",
+        courses: ["BSc (Hons) Computer Science", "Cyber Security"],
+        fees: "NRs. 12,00,000 - 14,00,000",
+        seats: 250,
+        image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",
+        desc: "Affiliated with Coventry University UK, featuring ethical hacking and IoT research labs."
+      },
+      {
+        name: "St. Xavier's College",
+        category: "CSIT",
+        location: "Maitighar, Kathmandu",
+        courses: ["BSc CSIT", "BCA"],
+        fees: "NRs. 6,50,000",
+        seats: 48,
+        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        desc: "Prestigious college with strict academic standards and top overall graduate result record."
+      }
+    ];
+
+    function renderItColleges(colleges) {
+      const container = document.getElementById('itGrid');
+      container.innerHTML = colleges.map(c => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-purple-500/50 transition flex flex-col">
+          <img src="${c.image}" class="w-full h-40 object-cover" alt="${c.name}">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[10px] bg-purple-500/10 text-purple-400 font-bold px-2 py-0.5 rounded border border-purple-500/20">${c.category}</span>
+                <span class="text-[11px] text-slate-400">📍 ${c.location}</span>
+              </div>
+              <h3 class="font-bold text-white text-base mt-2">${c.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">${c.desc}</p>
+              
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${c.courses.map(crs => `<span class="bg-slate-950 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800">${crs}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="flex justify-between"><span class="text-slate-400">Est. Fee:</span><span class="text-emerald-400 font-bold">${c.fees}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Seats per batch:</span><span class="text-white font-semibold">${c.seats} Seats</span></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterIt(cat) {
+      document.querySelectorAll('#itFilterContainer .it-btn').forEach(btn => {
+        btn.className = "it-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold";
+      });
+      event.target.className = "it-btn bg-purple-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold";
+
+      if(cat === 'all') {
+        renderItColleges(itColleges);
+      } else {
+        renderItColleges(itColleges.filter(c => c.category === cat));
+      }
+    }
+
+    function searchItColleges() {
+      const q = document.getElementById('itSearch').value.toLowerCase();
+      const filtered = itColleges.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.location.toLowerCase().includes(q) || 
+        c.courses.some(crs => crs.toLowerCase().includes(q))
+      );
+      renderItColleges(filtered);
+    }
+
+    renderItColleges(itColleges);
+  </script>
+</body>
+</html>

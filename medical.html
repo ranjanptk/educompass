@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Medical & Health Sciences Directory (MEC CEE) | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Nav -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-emerald-600 rounded-lg flex items-center justify-center font-bold text-white">🩺</div>
+        <a href="../index.html" class="font-extrabold text-xl text-white tracking-tight">Edu<span class="text-emerald-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Medical</span></a>
+      </div>
+      <nav class="hidden md:flex gap-4 text-xs font-semibold">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="engineering.html" class="text-slate-400 hover:text-white transition">Engineering</a>
+        <a href="medical.html" class="text-emerald-400 border-b-2 border-emerald-500 pb-1">Medical</a>
+        <a href="management.html" class="text-slate-400 hover:text-white transition">Management</a>
+        <a href="it.html" class="text-slate-400 hover:text-white transition">IT & CS</a>
+        <a href="law.html" class="text-slate-400 hover:text-white transition">Law</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <h1 class="text-3xl font-extrabold text-white">Medical & Allied Health Sciences Portal</h1>
+        <p class="text-slate-400 text-xs mt-1">Common Entrance Examination (MECEE) for MBBS, BDS, B.Sc Nursing, B.Pharm, and Paramedical in Nepal.</p>
+      </div>
+      <div class="bg-emerald-950 border border-emerald-800 text-emerald-300 text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <span>🩺 MEC CEE Total: 200 Marks</span>
+        <span class="text-slate-500">|</span>
+        <span>Pass Percentile: 50th</span>
+      </div>
+    </div>
+
+    <!-- MEC CEE Structure Card -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <span>🔬</span> MECEE UG Exam Mark Breakdown (200 Marks)
+      </h2>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Medical Education Commission (MEC) conducts a unified nationwide entrance test for all MBBS/BDS/Nursing aspirants. 75% seats in public medical colleges are reserved for government scholarships.
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+          <span class="block text-emerald-400 font-extrabold text-lg">80</span>
+          <span class="text-[11px] text-slate-400">Biology (Botany + Zoology)</span>
+        </div>
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+          <span class="block text-blue-400 font-extrabold text-lg">50</span>
+          <span class="text-[11px] text-slate-400">Chemistry</span>
+        </div>
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+          <span class="block text-purple-400 font-extrabold text-lg">50</span>
+          <span class="text-[11px] text-slate-400">Physics</span>
+        </div>
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+          <span class="block text-amber-400 font-extrabold text-lg">20</span>
+          <span class="text-[11px] text-slate-400">Mental Agility Test (MAT)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+      <div class="flex flex-wrap gap-2" id="medFilterContainer">
+        <button onclick="filterMed('all')" class="med-btn bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All Colleges</button>
+        <button onclick="filterMed('Public')" class="med-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">Government / Public</button>
+        <button onclick="filterMed('Private')" class="med-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">Private Medical</button>
+      </div>
+
+      <div class="w-full sm:w-64">
+        <input type="text" id="medSearch" onkeyup="searchMedColleges()" placeholder="Search MBBS, IOM, Maharajgunj..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-emerald-500">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="medGrid"></div>
+
+  </main>
+
+  <script>
+    const medicalColleges = [
+      {
+        name: "IOM Maharajgunj Medical Campus",
+        category: "Public",
+        location: "Maharajgunj, Kathmandu",
+        courses: ["MBBS", "BDS", "B.Sc Nursing", "B.Pharm", "B.Sc MLT"],
+        fees: "MEC Fixed: Government Scholarship / Self-Pay 48 Lakhs",
+        seats: 100,
+        affiliation: "Tribhuvan University (TU)",
+        image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
+        desc: "Nepal's premier apex government medical institute with Tribhuvan University Teaching Hospital (TUTH)."
+      },
+      {
+        name: "BPKIHS (BP Koirala Institute of Health Sciences)",
+        category: "Public",
+        location: "Dharan, Sunsari",
+        courses: ["MBBS", "BDS", "B.Sc Nursing", "B.Pharm"],
+        fees: "Government Scholarship / MEC Standard Cap",
+        seats: 100,
+        affiliation: "Autonomous Health University",
+        image: "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80",
+        desc: "Autonomous medical university in Eastern Nepal featuring a 700+ bed hospital and top residency programs."
+      },
+      {
+        name: "Patan Academy of Health Sciences (PAHS)",
+        category: "Public",
+        location: "Lagankhel, Lalitpur",
+        courses: ["MBBS", "B.Sc Nursing"],
+        fees: "Government Scholarship / Subsidized Quota",
+        seats: 65,
+        affiliation: "Autonomous PAHS University",
+        image: "https://images.unsplash.com/photo-1538108149393-fbbd81895907?auto=format&fit=crop&w=800&q=80",
+        desc: "Renowned for rural health commitment and problem-based community medicine learning curriculum."
+      },
+      {
+        name: "Kathmandu Medical College (KMC)",
+        category: "Private",
+        location: "Sinamangal / Duwakot",
+        courses: ["MBBS", "BDS", "B.Sc Nursing"],
+        fees: "NRs. 48,00,000 (MEC Prescribed Ceiling)",
+        seats: 100,
+        affiliation: "Kathmandu University (KU)",
+        image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&w=800&q=80",
+        desc: "Top ranked KU affiliated medical college with modern hospital facilities in Kathmandu."
+      },
+      {
+        name: "Nepal Medical College (NMC)",
+        category: "Private",
+        location: "Jorpati, Kathmandu",
+        courses: ["MBBS", "BDS", "B.Sc Nursing"],
+        fees: "NRs. 48,00,000",
+        seats: 100,
+        affiliation: "Kathmandu University (KU)",
+        image: "https://images.unsplash.com/photo-1512678080530-7760d81faba6?auto=format&fit=crop&w=800&q=80",
+        desc: "Established teaching hospital in Jorpati providing extensive clinical exposure for medical students."
+      },
+      {
+        name: "Chitwan Medical College (CMC)",
+        category: "Private",
+        location: "Bharatpur, Chitwan",
+        courses: ["MBBS", "BDS", "B.Pharm", "B.Sc Nursing"],
+        fees: "NRs. 48,00,000",
+        seats: 100,
+        affiliation: "Tribhuvan University (TU)",
+        image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=800&q=80",
+        desc: "Major healthcare center in Central Nepal equipped with state-of-the-art super-specialty departments."
+      }
+    ];
+
+    function renderMedColleges(colleges) {
+      const container = document.getElementById('medGrid');
+      container.innerHTML = colleges.map(c => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition flex flex-col">
+          <img src="${c.image}" class="w-full h-40 object-cover" alt="${c.name}">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[10px] bg-emerald-500/10 text-emerald-400 font-bold px-2 py-0.5 rounded border border-emerald-500/20">${c.category}</span>
+                <span class="text-[11px] text-slate-400">📍 ${c.location}</span>
+              </div>
+              <h3 class="font-bold text-white text-base mt-2">${c.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">${c.desc}</p>
+              
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${c.courses.map(crs => `<span class="bg-slate-950 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800">${crs}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="flex justify-between"><span class="text-slate-400">Affiliation:</span><span class="text-slate-200 font-semibold">${c.affiliation}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">MBBS Fee Cap:</span><span class="text-emerald-400 font-bold">${c.fees}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">MBBS Seats:</span><span class="text-white font-semibold">${c.seats} Seats</span></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterMed(cat) {
+      document.querySelectorAll('#medFilterContainer .med-btn').forEach(btn => {
+        btn.className = "med-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold";
+      });
+      event.target.className = "med-btn bg-emerald-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold";
+
+      if(cat === 'all') {
+        renderMedColleges(medicalColleges);
+      } else {
+        renderMedColleges(medicalColleges.filter(c => c.category === cat));
+      }
+    }
+
+    function searchMedColleges() {
+      const q = document.getElementById('medSearch').value.toLowerCase();
+      const filtered = medicalColleges.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.location.toLowerCase().includes(q) || 
+        c.courses.some(crs => crs.toLowerCase().includes(q))
+      );
+      renderMedColleges(filtered);
+    }
+
+    renderMedColleges(medicalColleges);
+  </script>
+</body>
+</html>

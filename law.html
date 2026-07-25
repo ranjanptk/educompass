@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Law (BALLB) & Social Sciences Directory Nepal | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Nav -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-rose-600 rounded-lg flex items-center justify-center font-bold text-white">⚖️</div>
+        <a href="../index.html" class="font-extrabold text-xl text-white tracking-tight">Edu<span class="text-rose-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Law & Humanities</span></a>
+      </div>
+      <nav class="hidden md:flex gap-4 text-xs font-semibold">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="engineering.html" class="text-slate-400 hover:text-white transition">Engineering</a>
+        <a href="medical.html" class="text-slate-400 hover:text-white transition">Medical</a>
+        <a href="management.html" class="text-slate-400 hover:text-white transition">Management</a>
+        <a href="it.html" class="text-slate-400 hover:text-white transition">IT & CS</a>
+        <a href="law.html" class="text-rose-400 border-b-2 border-rose-500 pb-1">Law</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
+    
+    <div>
+      <h1 class="text-3xl font-extrabold text-white">5-Year BALLB Law & Social Work (BSW) Portal</h1>
+      <p class="text-slate-400 text-xs mt-1">Pursue integrated Law (BALLB) or Social Work (BSW) directly after +2 / A-Levels in Nepal.</p>
+    </div>
+
+    <!-- Law Entrance Breakdown -->
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <span>⚖️</span> 5-Year Integrated BALLB Entrance Overview
+      </h2>
+      <p class="text-xs text-slate-300 leading-relaxed">
+        Admission to 5-Year BALLB in Nepal (TU Nepal Law College, Kathmandu School of Law, Chakrabarti) requires passing the competitive University Law Entrance Exam comprising Legal Aptitude, English, and Essay Writing.
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+        <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+          <span class="block text-rose-400 font-extrabold text-sm">30 Marks</span>
+          <span class="text-xs text-white font-semibold">Legal Aptitude & Constitutional Law</span>
+        </div>
+        <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+          <span class="block text-blue-400 font-extrabold text-sm">30 Marks</span>
+          <span class="text-xs text-white font-semibold">General Knowledge & Current Affairs</span>
+        </div>
+        <div class="bg-slate-950 p-3.5 rounded-xl border border-slate-800">
+          <span class="block text-emerald-400 font-extrabold text-sm">40 Marks</span>
+          <span class="text-xs text-white font-semibold">English & Subjective Essay Writing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="lawGrid"></div>
+
+  </main>
+
+  <script>
+    const lawColleges = [
+      {
+        name: "Nepal Law College",
+        category: "TU Government",
+        location: "Exhibition Road, Kathmandu",
+        courses: ["5-Year BALLB", "3-Year LLB"],
+        fees: "NRs. 1,80,000 - 2,50,000",
+        seats: 105,
+        image: "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
+        desc: "Nepal's oldest pioneer law campus under Tribhuvan University with strong advocacy moot courts."
+      },
+      {
+        name: "Kathmandu School of Law (KSL)",
+        category: "Purbanchal University",
+        location: "Suryabinayak, Bhaktapur",
+        courses: ["5-Year BALLB", "LLM"],
+        fees: "NRs. 7,50,000 - 8,50,000",
+        seats: 120,
+        image: "https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?auto=format&fit=crop&w=800&q=80",
+        desc: "Acclaimed autonomous law institution featuring human rights research centers and international moot competitions."
+      },
+      {
+        name: "National Law College (NaLC)",
+        category: "TU-Affiliated",
+        location: "Sanepa, Lalitpur",
+        courses: ["5-Year BALLB"],
+        fees: "NRs. 6,80,000",
+        seats: 70,
+        image: "https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&fit=crop&w=800&q=80",
+        desc: "Premier TU affiliated private law college in Sanepa offering clinical legal education."
+      },
+      {
+        name: "Chakrabarti Habiullah Law College",
+        category: "Purbanchal University",
+        location: "Bijulibazar, Kathmandu",
+        courses: ["5-Year BALLB"],
+        fees: "NRs. 6,20,000",
+        seats: 80,
+        image: "https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=800&q=80",
+        desc: "Centrally located law college in Kathmandu with vibrant legal aid clinics and debate societies."
+      }
+    ];
+
+    function renderLawColleges(colleges) {
+      const container = document.getElementById('lawGrid');
+      container.innerHTML = colleges.map(c => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-rose-500/50 transition flex flex-col">
+          <img src="${c.image}" class="w-full h-40 object-cover" alt="${c.name}">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[10px] bg-rose-500/10 text-rose-400 font-bold px-2 py-0.5 rounded border border-rose-500/20">${c.category}</span>
+                <span class="text-[11px] text-slate-400">📍 ${c.location}</span>
+              </div>
+              <h3 class="font-bold text-white text-base mt-2">${c.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">${c.desc}</p>
+              
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${c.courses.map(crs => `<span class="bg-slate-950 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800">${crs}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="flex justify-between"><span class="text-slate-400">Est. Fee:</span><span class="text-emerald-400 font-bold">${c.fees}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Total Seats:</span><span class="text-white font-semibold">${c.seats} Seats</span></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    renderLawColleges(lawColleges);
+  </script>
+</body>
+</html>

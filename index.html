@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EduCompass Nepal | Academic & Career Navigator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+
+    /* Custom Glass & Glow Utility Classes (Dark Mode Defaults) */
+    .dark .glass-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.85) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    /* Light Mode Glass Utility Classes */
+    .glass-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(241, 245, 249, 0.85) 100%);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(239, 68, 68, 0.5);
+      box-shadow: 0 20px 40px -15px rgba(239, 68, 68, 0.25);
+    }
+
+    .dark .bg-mesh {
+      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    .bg-mesh {
+      background-image: radial-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Subtopic Slide & Glow Hover Animation */
+    .subtopic-link {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dark .subtopic-link:hover {
+      transform: translateX(8px);
+      color: #ffffff;
+      background-color: rgba(30, 41, 59, 0.8);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    .subtopic-link:hover {
+      transform: translateX(8px);
+      color: #0f172a;
+      background-color: rgba(226, 232, 240, 0.8);
+      border-color: rgba(239, 68, 68, 0.4);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    .dark ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f8fafc;
+    }
+    .dark ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #ef4444;
+    }
+
+    /* Pulse Glow Animation for High Visibility Elements */
+    @keyframes subtleGlow {
+      0%, 100% { box-shadow: 0 0 15px rgba(239, 68, 68, 0.25); }
+      50% { box-shadow: 0 0 30px rgba(239, 68, 68, 0.45); }
+    }
+    .hero-search-glow {
+      animation: subtleGlow 4s infinite ease-in-out;
+    }
+
+    /* Pulse animation for active voice listening */
+    @keyframes micListening {
+      0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
+      70% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(239, 68, 68, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+    .mic-active {
+      animation: micListening 1.5s infinite;
+      background-color: #ef4444 !important;
+      color: #ffffff !important;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen bg-mesh relative selection:bg-red-500 selection:text-white flex flex-col md:flex-row transition-colors duration-300">
+
+  <!-- Background Ambient Lights -->
+  <div class="fixed top-0 left-1/3 w-[500px] h-[500px] bg-red-600/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+  <div class="fixed bottom-0 right-1/4 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+
+  <!-- STICKY VERTICAL SIDE NAVIGATION BAR (STAYS FIXED WHEN SCROLLING) -->
+  <aside class="w-full md:w-80 bg-white/95 dark:bg-slate-950/95 border-r border-slate-200 dark:border-slate-800/80 md:h-screen p-6 md:sticky md:top-0 z-40 backdrop-blur-xl flex flex-col justify-between shrink-0 shadow-2xl transition-colors duration-300 overflow-y-auto">
+    <div class="space-y-8">
+      
+      <!-- Brand Logo Header -->
+      <div class="flex items-center gap-3.5 pb-4 border-b border-slate-200 dark:border-slate-800/80">
+        <div class="w-11 h-11 bg-gradient-to-tr from-red-600 via-amber-500 to-amber-400 rounded-2xl flex items-center justify-center font-black text-white text-2xl shadow-lg shadow-red-600/30 transform hover:rotate-6 transition-transform">
+          🧭
+        </div>
+        <div>
+          <h1 class="text-2xl font-black text-slate-900 dark:text-white tracking-tight">Edu<span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 to-amber-400">Compass</span></h1>
+          <p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase tracking-widest font-bold">Nepal Academic Navigator</p>
+        </div>
+      </div>
+
+      <!-- Vertical Links & Sub-classes Hierarchy -->
+      <nav class="space-y-7">
+        
+        <!-- Navigation Group 1: Phase 01 Post-SEE -->
+        <div class="space-y-3">
+          <p class="text-sm font-black text-red-500 uppercase tracking-wider px-2 flex items-center gap-2">
+            <span>🚀</span> Phase 01: Post-SEE
+          </p>
+          <div class="space-y-1.5 pl-3 border-l-2 border-red-500/30">
+            <a href="#post-see" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 border border-transparent">
+              📌 Overview Hub
+            </a>
+            <a href="see/colleges.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              🏛️ +2 Colleges
+            </a>
+            <a href="see/courses.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              📚 Streams & CTEVT Diplomas
+            </a>
+            <a href="see/scholarship.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              🎓 Scholarship with GPA
+            </a>
+            <a href="see/help.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              💡 Guidance and Help
+            </a>
+          </div>
+        </div>
+
+        <!-- Navigation Group 2: Phase 02 Post-+2 -->
+        <div class="space-y-3">
+          <p class="text-sm font-black text-indigo-500 dark:text-indigo-400 uppercase tracking-wider px-2 flex items-center gap-2">
+            <span>🎓</span> Phase 02: Post-+2
+          </p>
+          <div class="space-y-1.5 pl-3 border-l-2 border-indigo-500/30">
+            <a href="#post-plus2" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-300 border border-transparent">
+              📌 Overview Hub
+            </a>
+            <a href="plus2/engineering.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              ⚙️ Engineering & Architecture
+            </a>
+            <a href="plus2/medical.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              🩺 Medical (MEC CEE)
+            </a>
+            <a href="plus2/management.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              📊 Management & CMAT
+            </a>
+            <a href="plus2/it.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              💻 IT & Computer Degrees
+            </a>
+            <a href="plus2/law.html" class="subtopic-link block px-3 py-2 rounded-xl text-xs font-medium text-slate-600 dark:text-slate-400 border border-transparent">
+              ⚖️ Law & Social Work
+            </a>
+          </div>
+        </div>
+
+      </nav>
+    </div>
+
+    <!-- Navigation Footer Badge -->
+    <div class="pt-6 border-t border-slate-200 dark:border-slate-800/80 mt-6">
+      <div class="p-3.5 bg-slate-100 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl text-[11px] text-slate-600 dark:text-slate-400 text-center shadow-inner">
+        🎓 <span class="text-slate-900 dark:text-white font-bold">EduCompass Portal</span> <br>Nepal Academic Roadmaps
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT AREA -->
+  <div class="flex-1 flex flex-col justify-between min-w-0">
+    
+    <!-- STICKY TOP RIGHT CONTROL BAR (Customer Service & Theme Toggle) -->
+    <header class="w-full px-6 md:px-10 py-4 flex justify-end items-center gap-3 z-30 sticky top-0 backdrop-blur-md bg-slate-50/80 dark:bg-slate-950/80 border-b border-slate-200/50 dark:border-slate-800/50">
+      
+      <!-- Customer Service Button -->
+      <button onclick="toggleCustomerServiceModal()" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs font-bold text-slate-700 dark:text-slate-200 shadow-sm transition-all transform hover:scale-105 active:scale-95">
+        <span class="text-red-500 text-base">🎧</span> Customer Services
+      </button>
+
+      <!-- Theme Switcher Button -->
+      <button id="themeToggleBtn" onclick="toggleTheme()" class="flex items-center gap-2 px-4 py-2 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200 dark:border-slate-800 rounded-2xl text-xs font-bold text-slate-700 dark:text-slate-200 shadow-sm transition-all transform hover:scale-105 active:scale-95">
+        <span id="themeIcon">🌙</span> <span id="themeText">Dark Mode</span>
+      </button>
+    </header>
+
+    <main class="max-w-6xl mx-auto p-6 md:p-10 space-y-16 w-full">
+
+      <!-- HERO BANNER WITH PROMINENT UN-OVERLAPPED SEARCH BAR -->
+      <section class="relative rounded-3xl p-8 md:p-12 overflow-hidden border border-slate-200 dark:border-slate-800/80 bg-gradient-to-br from-slate-100 via-white to-slate-200 dark:from-slate-900/95 dark:via-slate-900/70 dark:to-slate-950 shadow-2xl transition-colors duration-300">
+        <div class="absolute -right-10 -bottom-10 w-96 h-96 bg-red-500/15 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-3xl space-y-6 relative z-10">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-red-500/40 bg-red-500/10 text-red-600 dark:text-red-400 text-xs font-extrabold uppercase tracking-wider shadow-sm">
+            <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span> Educational & Career Compass
+          </div>
+
+          <h2 class="text-4xl md:text-6xl font-black text-slate-900 dark:text-white tracking-tight leading-[1.1]">
+            Shape Your Goal. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-red-500 via-amber-500 to-indigo-500 dark:from-red-400 dark:via-amber-300 dark:to-indigo-400">Master Your Path.</span>
+          </h2>
+
+          <p class="text-slate-600 dark:text-slate-300 text-sm md:text-base leading-relaxed font-normal max-w-2xl">
+            From stream selection after SEE to cracking competitive entrance scholarship exams (IOE, MECEE, CMAT, CSIT) and planning higher education abroad, explore complete roadmaps designed for your success.
+          </p>
+
+          <!-- PROMINENT HIGH-VISIBILITY SEARCH BAR WITH NON-OVERLAPPING VOICE BUTTON -->
+          <div class="pt-4 max-w-2xl">
+            <label for="globalSearch" class="block text-xs font-bold text-slate-700 dark:text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
+              <span class="text-red-500">🔍</span> Quick Portal Search
+            </label>
+            <div class="relative flex items-center hero-search-glow rounded-2xl">
+              <span class="absolute left-4 text-red-500 text-lg md:text-xl font-bold pointer-events-none">🔍</span>
+              
+              <!-- Increased right padding (pr-36 md:pr-40) to prevent any text overlapping -->
+              <input type="text" id="globalSearch" onkeyup="searchPortal()" placeholder="Search pathways (e.g., Engineering, Architecture)..." class="w-full bg-white dark:bg-slate-900/95 border-2 border-red-500/60 rounded-2xl pl-11 md:pl-14 pr-36 md:pr-40 py-3.5 md:py-4 text-sm md:text-base font-medium text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:border-red-400 focus:ring-4 focus:ring-red-500/20 transition-all shadow-2xl">
+              
+              <!-- Properly styled and spaced right action container -->
+              <div class="absolute right-2.5 flex items-center gap-1.5">
+                <!-- Voice Search Button -->
+                <button id="micBtn" onclick="startVoiceSearch()" title="Search by voice" class="p-2 bg-slate-100 dark:bg-slate-800 hover:bg-red-500/10 text-slate-600 dark:text-slate-300 hover:text-red-500 rounded-xl transition-all transform active:scale-95 flex items-center justify-center border border-slate-200 dark:border-slate-700">
+                  <span class="text-base md:text-lg">🎤</span>
+                </button>
+
+                <!-- Search Action Button -->
+                <button onclick="searchPortal()" class="px-3.5 md:px-5 py-2 md:py-2.5 bg-gradient-to-r from-red-600 to-amber-500 hover:from-red-500 hover:to-amber-400 text-white font-bold text-xs rounded-xl shadow-lg transition-all transform hover:scale-105 active:scale-95">
+                  Search
+                </button>
+              </div>
+            </div>
+            <p id="micStatus" class="text-[11px] text-slate-500 dark:text-slate-400 mt-2 pl-2">Type keywords or tap 🎤 to speak to filter course modules in real-time.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- NO RESULTS FOUND BANNER (HIDDEN BY DEFAULT) -->
+      <div id="noResultsBox" class="hidden glass-card rounded-3xl p-8 md:p-12 text-center space-y-6 border border-red-500/30">
+        <div class="w-16 h-16 bg-red-500/10 text-red-500 dark:text-red-400 rounded-full flex items-center justify-center text-3xl font-black mx-auto border border-red-500/20">
+          ⚠️
+        </div>
+        <div class="space-y-2">
+          <h3 class="text-2xl font-black text-slate-900 dark:text-white">No Matching Results Found</h3>
+          <p class="text-sm text-slate-600 dark:text-slate-400 max-w-md mx-auto">We couldn't find anything matching your search term. Please try searching for relevant academic terms or keywords below.</p>
+        </div>
+        <div class="pt-4 border-t border-slate-200 dark:border-slate-800">
+          <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-3">Suggested Topics To Search:</p>
+          <div class="flex flex-wrap justify-center gap-2">
+            <button onclick="applySuggestion('Colleges')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">🏛️ +2 Colleges</button>
+            <button onclick="applySuggestion('Scholarship')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">🎓 Scholarship</button>
+            <button onclick="applySuggestion('Engineering')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">⚙️ Engineering & Architecture</button>
+            <button onclick="applySuggestion('Medical')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">🩺 Medical (CEE)</button>
+            <button onclick="applySuggestion('IT')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">💻 IT & CSIT</button>
+            <button onclick="applySuggestion('Guidance')" class="px-3.5 py-1.5 bg-slate-200 dark:bg-slate-800/80 hover:bg-red-500/20 border border-slate-300 dark:border-slate-700 hover:border-red-500/50 rounded-xl text-xs font-semibold text-slate-800 dark:text-slate-300 transition-all">💡 Guidance and Help</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- STATIC INFORMATION SECTIONS (HIDDEN DURING ACTIVE SEARCH) -->
+      <div id="staticSections" class="space-y-16">
+        
+        <!-- SECTION 1: FURTHER STUDIES KNOWLEDGE -->
+        <section id="further-studies" class="space-y-6">
+          <div class="border-b border-slate-200 dark:border-slate-800/80 pb-4">
+            <span class="text-amber-500 dark:text-amber-400 text-xs font-extrabold uppercase tracking-widest">Academic Horizons</span>
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-0.5">Knowledge for Further Studies</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div class="glass-card rounded-3xl overflow-hidden group">
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80" alt="University Entrance Exam Preparation" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30 px-3 py-1 rounded-lg backdrop-blur-md">Domestic Excellence</span>
+              </div>
+              <div class="p-6 space-y-3">
+                <h4 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-amber-500 transition-colors">National Entrance Exam Strategy</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Understand how universities like TU Pulchowk, KU, and Pokhara University conduct entrance tests. Securing top merit ranks ensures regular full scholarship seats in Architecture, Computer, or Civil Engineering.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden group">
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80" alt="Higher Education Abroad and International Degrees" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-xs font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-3 py-1 rounded-lg backdrop-blur-md">International Pathways</span>
+              </div>
+              <div class="p-6 space-y-3">
+                <h4 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-indigo-500 transition-colors">Global Education & Masters Transition</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Completing your Bachelor degree in Nepal provides a solid academic base. Early portfolio preparation and maintaining strong grades opens direct scholarship pathways for Masters in Australia, US, or Europe.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl overflow-hidden group">
+              <div class="h-48 overflow-hidden relative">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" alt="Technical Skills and Practical Projects" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <span class="absolute bottom-3 left-4 text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 px-3 py-1 rounded-lg backdrop-blur-md">Skill Integration</span>
+              </div>
+              <div class="p-6 space-y-3">
+                <h4 class="font-bold text-slate-900 dark:text-white text-base group-hover:text-emerald-500 transition-colors">Practical Project Development</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Combining high school theory with practical technical skills—like web development, CAD software, and system design—gives you a huge advantage in practical exams, portfolio reviews, and future careers.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 2: OBSTACLES TO SUCCESS -->
+        <section id="obstacles" class="space-y-6">
+          <div class="border-b border-slate-200 dark:border-slate-800/80 pb-4">
+            <span class="text-red-500 text-xs font-extrabold uppercase tracking-widest">Mindset & Resilience</span>
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-0.5">Overcoming Common Obstacles to Success</h3>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+              <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=500&q=80" alt="Exam Stress Management" class="w-full md:w-44 h-36 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
+              <div class="space-y-2">
+                <div class="inline-block text-red-500 dark:text-red-400 text-xs font-extrabold uppercase tracking-wider">Obstacle 01</div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">High Competition & Exam Stress</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Tens of thousands compete for limited regular scholarship seats. Overcome this by shifting focus from overall applicant numbers to systematic daily topic completion and solving past 10-year question sets.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+              <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=500&q=80" alt="Information Overload and Confusion" class="w-full md:w-44 h-36 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
+              <div class="space-y-2">
+                <div class="inline-block text-amber-500 dark:text-amber-400 text-xs font-extrabold uppercase tracking-wider">Obstacle 02</div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Information Overload & Misdirection</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Unverified advice regarding syllabus changes or college selection can create confusion. Always rely on official university handbooks, syllabus structures, and structured portals like EduCompass.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?auto=format&fit=crop&w=500&q=80" alt="Financial Planning and Scholarships" class="w-full md:w-44 h-36 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
+              <div class="space-y-2">
+                <div class="inline-block text-blue-500 dark:text-blue-400 text-xs font-extrabold uppercase tracking-wider">Obstacle 03</div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Financial Constraints & Fee Structures</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Higher tuition fees in private faculties can feel daunting. Understand municipal scholarship rules (like Kathmandu Metropolitan 10% quota) and merit-based waivers to secure tuition-free education.
+                </p>
+              </div>
+            </div>
+
+            <div class="glass-card rounded-3xl p-6 flex flex-col md:flex-row gap-6 items-center">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=500&q=80" alt="Consistency and Time Management" class="w-full md:w-44 h-36 object-cover rounded-2xl border border-slate-200 dark:border-slate-800 shrink-0">
+              <div class="space-y-2">
+                <div class="inline-block text-emerald-500 dark:text-emerald-400 text-xs font-extrabold uppercase tracking-wider">Obstacle 04</div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg">Lack of Consistency & Discipline</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Cramming weeks before entrance exams produces poor results. Developing a daily 2-hour revision habit and taking weekly full-length mock tests builds speed, accuracy, and confidence.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- SECTION 3: LIFE GOALS & LONG-TERM VISION -->
+        <section id="life-goals" class="space-y-6">
+          <div class="border-b border-slate-200 dark:border-slate-800/80 pb-4">
+            <span class="text-indigo-500 dark:text-indigo-400 text-xs font-extrabold uppercase tracking-widest">Purpose & Future</span>
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-0.5">Defining Your Goal in Life</h3>
+          </div>
+
+          <div class="glass-card p-8 md:p-10 rounded-3xl relative overflow-hidden flex flex-col md:flex-row items-center gap-8">
+            <div class="space-y-4 max-w-xl z-10">
+              <span class="px-3 py-1 bg-indigo-500/20 text-indigo-600 dark:text-indigo-300 border border-indigo-500/30 text-xs font-bold rounded-full">Clear Roadmap</span>
+              <h4 class="text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white">Your Goal is Bigger Than an Exam</h4>
+              <p class="text-xs md:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                Whether your vision is designing sustainable city landmarks as an architect, building powerful web applications, or earning an international Master's degree abroad, every grade and exam is simply a milestone. Define your core objective early and align your daily habits to achieve it.
+              </p>
+            </div>
+            <div class="w-full md:w-80 h-52 rounded-2xl overflow-hidden border border-slate-200 dark:border-slate-800 shrink-0 shadow-2xl">
+              <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=600&q=80" alt="Building Goals and Architectural Vision" class="w-full h-full object-cover">
+            </div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- SECTION 4: POST-SEE HUB -->
+      <section id="post-see" class="space-y-6 pt-6 searchable-section">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 pb-4 section-header">
+          <div>
+            <span class="text-red-500 text-xs font-extrabold uppercase tracking-widest">Phase 01</span>
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-0.5">Post-SEE Pathways Hub</h3>
+          </div>
+          <span class="text-xs text-slate-600 dark:text-slate-400 font-mono bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-3 py-1 rounded-full">see/ folder</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" id="seeModules">
+
+          <a href="see/colleges.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-red-500/10 text-red-500 dark:text-red-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-red-500/20 group-hover:scale-110 transition-transform">🏛️</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-red-500 transition-colors">+2 Colleges</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">Comprehensive list of colleges across Kathmandu, Lalitpur, Bhaktapur, Pokhara, Chitwan, and Biratnagar with eligibility & fee structures.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-red-500 font-bold">
+              <span>Explore Directory</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="see/courses.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-blue-500/10 text-blue-500 dark:text-blue-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-blue-500/20 group-hover:scale-110 transition-transform">📚</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-blue-500 transition-colors">Streams & CTEVT Diplomas</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">Compare +2 Science, Management, Humanities, Law, and 3-Year CTEVT Technical Diplomas in Civil, IT, and Pharmacy.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-blue-500 font-bold">
+              <span>View Courses</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="see/scholarship.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-amber-500/10 text-amber-500 dark:text-amber-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-amber-500/20 group-hover:scale-110 transition-transform">🎓</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-amber-500 transition-colors">Scholarship with GPA</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">Calculate tuition fee discounts based on your SEE GPA and explore Kathmandu Metropolitan City (KMC 10%) free quota rules.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-amber-500 font-bold">
+              <span>Calculate Waiver</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="see/help.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-emerald-500/20 group-hover:scale-110 transition-transform">💡</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-emerald-500 transition-colors">Guidance and Help</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">Interactive career interest evaluation quiz designed to recommend the ideal high school stream based on your future goals.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-emerald-500 font-bold">
+              <span>Start Quiz</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+      <!-- SECTION 5: POST-+2 HUB -->
+      <section id="post-plus2" class="space-y-6 pt-6 searchable-section">
+        <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-800/80 pb-4 section-header">
+          <div>
+            <span class="text-indigo-500 dark:text-indigo-400 text-xs font-extrabold uppercase tracking-widest">Phase 02</span>
+            <h3 class="text-2xl md:text-3xl font-black text-slate-900 dark:text-white mt-0.5">Post-+2 Bachelor Faculties Hub</h3>
+          </div>
+          <span class="text-xs text-slate-600 dark:text-slate-400 font-mono bg-slate-200 dark:bg-slate-900 border border-slate-300 dark:border-slate-800 px-3 py-1 rounded-full">plus2/ folder</span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="plus2Modules">
+
+          <a href="plus2/engineering.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-orange-500/10 text-orange-500 dark:text-orange-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-orange-500/20 group-hover:scale-110 transition-transform">⚙️</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-orange-500 transition-colors">Engineering & Architecture (IOE / KU)</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">BE Civil, Computer, Electrical & Architecture. IOE Entrance (140 Marks) syllabus breakdown, Pulchowk cutoffs, and private colleges.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-orange-500 font-bold">
+              <span>Engineering Guide</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="plus2/medical.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-red-500/10 text-red-500 dark:text-red-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-red-500/20 group-hover:scale-110 transition-transform">🩺</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-red-500 transition-colors">Medical (MEC CEE)</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">MBBS, BDS, B.Sc Nursing & B.Pharm. Medical Education Commission CEE (200 Marks) exam guide, IOM Maharajgunj & BPKIHS seats.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-red-500 font-bold">
+              <span>Medical Guide</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="plus2/management.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-emerald-500/10 text-emerald-500 dark:text-emerald-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-emerald-500/20 group-hover:scale-110 transition-transform">📊</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-emerald-500 transition-colors">Management & Accounting</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">BBA, BBM, BHM & CA/ACCA routes. TU CMAT (100 Marks) entrance exam syllabus, Shanker Dev College, and KU KUSOM pathways.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-emerald-500 font-bold">
+              <span>Management & CMAT</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="plus2/it.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-cyan-500/10 text-cyan-500 dark:text-cyan-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-cyan-500/20 group-hover:scale-110 transition-transform">💻</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-cyan-500 transition-colors">IT & Computer Degrees</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">BSc CSIT vs BCA vs BIT vs UK 3-Year Computing Degrees. Entrance rules for ASCOL, DWIT, Islington, and tech career pathways.</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-cyan-500 font-bold">
+              <span>Compare IT Degrees</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+          <a href="plus2/law.html" class="portal-card glass-card p-6 rounded-3xl flex flex-col justify-between group md:col-span-2 lg:col-span-2">
+            <div class="space-y-4">
+              <div class="w-12 h-12 bg-purple-500/10 text-purple-500 dark:text-purple-400 rounded-2xl flex items-center justify-center font-bold text-2xl border border-purple-500/20 group-hover:scale-110 transition-transform">⚖️</div>
+              <div>
+                <h4 class="font-bold text-slate-900 dark:text-white text-lg group-hover:text-purple-500 transition-colors">Law & Social Sciences</h4>
+                <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed mt-2">5-Year Integrated BALLB & BSW (Bachelor of Social Work). TU Law entrance exam format, Nepal Law College, and Kathmandu School of Law (KSL).</p>
+              </div>
+            </div>
+            <div class="mt-6 pt-4 border-t border-slate-200 dark:border-slate-800/80 flex justify-between items-center text-xs text-purple-500 font-bold">
+              <span>BALLB & Legal Pathways</span>
+              <span class="group-hover:translate-x-1.5 transition-transform">&rarr;</span>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </main>
+
+    <!-- CUSTOMER SERVICE MODAL -->
+    <div id="customerServiceModal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+      <div class="glass-card bg-white dark:bg-slate-900 max-w-lg w-full rounded-3xl p-6 md:p-8 space-y-6 shadow-2xl border border-slate-200 dark:border-slate-800 relative">
+        <button onclick="toggleCustomerServiceModal()" class="absolute top-5 right-5 text-slate-400 hover:text-slate-900 dark:hover:text-white text-xl font-bold">✕</button>
+        
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 rounded-2xl bg-red-500/10 text-red-500 flex items-center justify-center text-2xl font-bold border border-red-500/20">🎧</div>
+          <div>
+            <h3 class="text-xl font-black text-slate-900 dark:text-white">Customer Services & Support</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">EduCompass Student Assistance Hub</p>
+          </div>
+        </div>
+
+        <div class="space-y-3 pt-2">
+          <div class="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Direct Helpline</p>
+              <p class="text-sm font-extrabold text-slate-900 dark:text-white">+977 01-4XXXXXX / +977 98XXXXXXXX</p>
+            </div>
+            <span class="text-xl">📞</span>
+          </div>
+
+          <div class="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Email Support</p>
+              <p class="text-sm font-extrabold text-slate-900 dark:text-white">support@educompass.edu.np</p>
+            </div>
+            <span class="text-xl">✉️</span>
+          </div>
+
+          <div class="p-4 bg-slate-100 dark:bg-slate-800/50 rounded-2xl border border-slate-200 dark:border-slate-700/50 flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-slate-500 dark:text-slate-400 uppercase">Live Counseling Hours</p>
+              <p class="text-sm font-extrabold text-slate-900 dark:text-white">Sunday - Friday (10:00 AM - 5:00 PM)</p>
+            </div>
+            <span class="text-xl">⏰</span>
+          </div>
+        </div>
+
+        <button onclick="toggleCustomerServiceModal()" class="w-full py-3 bg-gradient-to-r from-red-600 to-amber-500 text-white font-bold text-xs rounded-xl shadow-lg transition-all transform hover:scale-[1.02] active:scale-95">
+          Close Window
+        </button>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-100 dark:bg-slate-950/90 border-t border-slate-200 dark:border-slate-800/80 px-6 py-8 text-center text-xs text-slate-500 dark:text-slate-500 mt-12 transition-colors duration-300">
+      <p class="font-medium">© EduCompass Nepal. Empowering students with clear roadmaps, entrance guidance, and verified academic data.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    /* Global Search Functionality */
+    function searchPortal() {
+      const q = document.getElementById('globalSearch').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.portal-card');
+      const sections = document.querySelectorAll('.searchable-section');
+      const staticSections = document.getElementById('staticSections');
+      const noResultsBox = document.getElementById('noResultsBox');
+
+      let matchCount = 0;
+
+      if (q === '') {
+        // Show everything normally when search is empty
+        staticSections.classList.remove('hidden');
+        noResultsBox.classList.add('hidden');
+
+        sections.forEach(sec => {
+          sec.classList.remove('hidden');
+          const secHeader = sec.querySelector('.section-header');
+          if (secHeader) secHeader.classList.remove('hidden');
+        });
+
+        cards.forEach(card => {
+          card.classList.remove('hidden');
+        });
+        return;
+      }
+
+      // Hide general info sections when searching
+      staticSections.classList.add('hidden');
+
+      // Filter cards
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+        if (text.includes(q)) {
+          card.classList.remove('hidden');
+          matchCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      // Show/Hide section headers based on matching cards within them
+      sections.forEach(sec => {
+        const visibleCards = sec.querySelectorAll('.portal-card:not(.hidden)');
+        const secHeader = sec.querySelector('.section-header');
+        
+        if (visibleCards.length === 0) {
+          sec.classList.add('hidden');
+        } else {
+          sec.classList.remove('hidden');
+          if (secHeader) secHeader.classList.remove('hidden');
+        }
+      });
+
+      // Show "No Results Found" box if zero matches
+      if (matchCount === 0) {
+        noResultsBox.classList.remove('hidden');
+      } else {
+        noResultsBox.classList.add('hidden');
+      }
+    }
+
+    function applySuggestion(keyword) {
+      const searchInput = document.getElementById('globalSearch');
+      searchInput.value = keyword;
+      searchPortal();
+    }
+
+    /* Customer Service Modal Toggle */
+    function toggleCustomerServiceModal() {
+      const modal = document.getElementById('customerServiceModal');
+      modal.classList.toggle('hidden');
+    }
+
+    /* Theme Toggle Functionality (Dark / Light) */
+    function toggleTheme() {
+      const htmlEl = document.documentElement;
+      const themeIcon = document.getElementById('themeIcon');
+      const themeText = document.getElementById('themeText');
+
+      if (htmlEl.classList.contains('dark')) {
+        htmlEl.classList.remove('dark');
+        themeIcon.innerText = '☀️';
+        themeText.innerText = 'Light Mode';
+        localStorage.setItem('theme', 'light');
+      } else {
+        htmlEl.classList.add('dark');
+        themeIcon.innerText = '🌙';
+        themeText.innerText = 'Dark Mode';
+        localStorage.setItem('theme', 'dark');
+      }
+    }
+
+    /* Voice Search Functionality */
+    function startVoiceSearch() {
+      const micBtn = document.getElementById('micBtn');
+      const micStatus = document.getElementById('micStatus');
+      const searchInput = document.getElementById('globalSearch');
+
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+        alert('Voice Search is not supported in your browser. Please use Chrome or Edge.');
+        return;
+      }
+
+      const recognition = new SpeechRecognition();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+
+      recognition.onstart = function() {
+        micBtn.classList.add('mic-active');
+        micStatus.innerText = '🎙️ Listening... Speak now!';
+        micStatus.classList.add('text-red-500', 'font-bold');
+      };
+
+      recognition.onspeechend = function() {
+        micBtn.classList.remove('mic-active');
+        recognition.stop();
+      };
+
+      recognition.onresult = function(event) {
+        const transcript = event.results[0][0].transcript;
+        searchInput.value = transcript;
+        micStatus.innerText = 'Searching for: "' + transcript + '"';
+        micStatus.classList.remove('text-red-500', 'font-bold');
+        searchPortal();
+      };
+
+      recognition.onerror = function(event) {
+        micBtn.classList.remove('mic-active');
+        micStatus.innerText = 'Voice search error: ' + event.error;
+        micStatus.classList.remove('text-red-500', 'font-bold');
+      };
+
+      recognition.start();
+    }
+  </script>
+</body>
+</html>

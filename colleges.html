@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-SEE +2 Colleges Directory Nepal | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .glass-card { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <nav class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="w-9 h-9 bg-red-600 rounded-xl flex items-center justify-center font-bold text-white shadow-lg shadow-red-900/40 hover:bg-red-500 transition-all">🧭</a>
+      <h1 class="text-lg font-extrabold text-white tracking-tight">Edu<span class="text-red-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Post-SEE +2 Colleges</span></h1>
+    </div>
+    <div class="flex gap-4 text-xs font-semibold">
+      <a href="../index.html" class="text-slate-400 hover:text-white transition-colors">← Main Portal</a>
+      <a href="scholarship.html" class="text-red-400 hover:underline">GPA Scholarship Finder</a>
+    </div>
+  </nav>
+
+  <main class="max-w-7xl mx-auto p-6 space-y-8">
+
+    <header class="bg-gradient-to-r from-red-950 via-slate-900 to-indigo-950 border border-slate-800 rounded-3xl p-8 relative overflow-hidden">
+      <div class="max-w-2xl relative z-10">
+        <span class="bg-red-500/10 text-red-400 text-xs font-extrabold px-3 py-1 rounded-full border border-red-500/20 uppercase tracking-wider">Kathmandu & Major Nepal Cities</span>
+        <h2 class="text-3xl font-extrabold text-white mt-3">Top Secondary (+2) Schools & Colleges</h2>
+        <p class="text-slate-300 text-xs mt-2 leading-relaxed">Comprehensive directory of NEB-affiliated colleges across Science, Management, Humanities, and Law streams with fees, GPA eligibility, and entrance criteria.</p>
+      </div>
+    </header>
+
+    <!-- Filter Bar -->
+    <section class="bg-slate-900 p-4 rounded-2xl border border-slate-800 flex flex-wrap items-center justify-between gap-4">
+      <div class="relative flex-1 min-w-[260px]">
+        <input type="text" id="searchCollege" onkeyup="filterColleges()" placeholder="Search college name, location, stream..." class="w-full bg-slate-950 border border-slate-800 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-red-500">
+        <span class="absolute left-3 top-2.5 text-slate-500 text-xs">🔍</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 text-xs">
+        <select id="filterLocation" onchange="filterColleges()" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-300 focus:outline-none">
+          <option value="all">All Locations</option>
+          <option value="Kathmandu">Kathmandu Valley</option>
+          <option value="Lalitpur">Lalitpur</option>
+          <option value="Bhaktapur">Bhaktapur</option>
+          <option value="Pokhara">Pokhara</option>
+          <option value="Chitwan">Chitwan</option>
+          <option value="Biratnagar">Biratnagar</option>
+        </select>
+
+        <select id="filterStream" onchange="filterColleges()" class="bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-slate-300 focus:outline-none">
+          <option value="all">All Streams</option>
+          <option value="Science">Science Stream</option>
+          <option value="Management">Management Stream</option>
+          <option value="Humanities">Humanities & Law</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Colleges Grid -->
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="seeCollegeGrid">
+      <!-- Injected dynamically via JS -->
+    </section>
+
+  </main>
+
+  <!-- Modal -->
+  <div id="seeCollegeModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl max-w-xl w-full max-h-[90vh] overflow-y-auto p-6 relative shadow-2xl">
+      <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800 w-8 h-8 rounded-full flex items-center justify-center font-bold">&times;</button>
+      <div id="modalDetail"></div>
+    </div>
+  </div>
+
+  <script>
+    const seeColleges = [
+      { id: 'sxc', name: "St. Xavier's College", location: 'Kathmandu', area: 'Maitighar', streams: ['Science'], image: 'https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80', minGpa: '3.6 (Grade A+ in Math & Sci)', fee: 'NRs. 1,80,000 - 2,20,000', entrance: 'Jesuit Entrance Test', seats: '500 Science', phone: '01-4221570', website: 'https://sxc.edu.np' },
+      { id: 'sos', name: 'SOS Hermann Gmeiner Secondary School', location: 'Bhaktapur', area: 'Sanothimi', streams: ['Science'], image: 'https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80', minGpa: '3.6', fee: 'NRs. 1,20,000 - 1,50,000', entrance: 'Written Merit Exam', seats: '160 Science', phone: '01-6630294', website: 'https://soshgssbhaktapur.edu.np' },
+      { id: 'kmc', name: 'Kathmandu Model College (KMC)', location: 'Kathmandu', area: 'Balkumari / Bagbazar', streams: ['Science', 'Management', 'Law'], image: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.2 | Mgmt: 2.4', fee: 'NRs. 1,50,000 - 2,40,000', entrance: 'KMC Entrance Computerized', seats: '1200+ Seats', phone: '01-4242121', website: 'https://ktmmodelcollege.edu.np' },
+      { id: 'trinity', name: 'Trinity International College', location: 'Kathmandu', area: 'Dillibazar', streams: ['Science', 'Management', 'Humanities'], image: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.2 | Mgmt: 2.4', fee: 'NRs. 1,80,000 - 2,60,000', entrance: 'Trinity Written Test', seats: '1000+ Seats', phone: '01-4445955', website: 'https://trinity.edu.np' },
+      { id: 'prasadi', name: 'Prasadi Academy', location: 'Lalitpur', area: 'Manbhawan', streams: ['Science', 'Management'], image: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.4 | Mgmt: 2.8', fee: 'NRs. 1,60,000 - 2,10,000', entrance: 'Prasadi Entrance Test', seats: '800 Seats', phone: '01-5530568', website: 'https://prasadi.edu.np' },
+      { id: 'pentagon', name: 'Pentagon International College', location: 'Kathmandu', area: 'Tinkune', streams: ['Science', 'Management'], image: 'https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.0 | Mgmt: 2.2', fee: 'NRs. 1,30,000 - 1,80,000', entrance: 'Entrance Screening', seats: '600 Seats', phone: '01-4112322', website: 'https://pentagon.edu.np' },
+      { id: 'uniglobe', name: 'Uniglobe Secondary School', location: 'Kathmandu', area: 'Kamaladi', streams: ['Science', 'Management'], image: 'https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.2 | Mgmt: 2.6', fee: 'NRs. 1,70,000 - 2,50,000', entrance: 'Uniglobe Entrance Exam', seats: '700 Seats', phone: '01-4251409', website: 'https://uniglobe.edu.np' },
+      { id: 'sos-pokhara', name: 'SOS Hermann Gmeiner School Pokhara', location: 'Pokhara', area: 'Gharipatan', streams: ['Science'], image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80', minGpa: '3.4', fee: 'NRs. 1,10,000 - 1,40,000', entrance: 'Merit Entrance Exam', seats: '120 Science', phone: '061-463307', website: 'https://sospokhara.edu.np' },
+      { id: 'aroma-chitwan', name: 'Aroma Secondary School', location: 'Chitwan', area: 'Bharatpur', streams: ['Science', 'Management'], image: 'https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 3.0 | Mgmt: 2.0', fee: 'NRs. 1,10,000 - 1,60,000', entrance: 'Written Entrance Test', seats: '500 Seats', phone: '056-526272', website: 'https://aroma.edu.np' },
+      { id: 'koshi-biratnagar', name: 'Koshi St. James College', location: 'Biratnagar', area: 'Trafi Chowk', streams: ['Science', 'Management'], image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80', minGpa: 'Science: 2.8 | Mgmt: 2.0', fee: 'NRs. 90,000 - 1,30,000', entrance: 'Direct Interview / Test', seats: '400 Seats', phone: '021-523321', website: 'https://koshistjames.edu.np' }
+    ];
+
+    function renderColleges(data) {
+      const grid = document.getElementById('seeCollegeGrid');
+      grid.innerHTML = data.map(col => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-red-500/50 transition-all cursor-pointer group" onclick="openModal('${col.id}')">
+          <div class="h-44 overflow-hidden relative">
+            <img src="${col.image}" alt="${col.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300">
+            <span class="absolute top-3 right-3 bg-red-600 text-white text-[10px] font-bold px-2 py-0.5 rounded">${col.location}</span>
+          </div>
+          <div class="p-5">
+            <h4 class="font-bold text-base text-white group-hover:text-red-400 transition-colors">${col.name}</h4>
+            <p class="text-xs text-slate-400 mt-0.5">${col.area}, ${col.location}</p>
+            <div class="mt-3 flex flex-wrap gap-1">
+              ${col.streams.map(s => `<span class="bg-slate-800 text-slate-300 text-[10px] px-2 py-0.5 rounded">${s}</span>`).join('')}
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex justify-between items-center text-xs">
+              <span class="text-emerald-400 font-semibold">${col.fee}</span>
+              <span class="text-red-400 font-bold">Details &rarr;</span>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterColleges() {
+      const q = document.getElementById('searchCollege').value.toLowerCase();
+      const loc = document.getElementById('filterLocation').value;
+      const stream = document.getElementById('filterStream').value;
+
+      const filtered = seeColleges.filter(col => {
+        const matchesQ = col.name.toLowerCase().includes(q) || col.area.toLowerCase().includes(q) || col.streams.join(' ').toLowerCase().includes(q);
+        const matchesLoc = loc === 'all' || col.location === loc;
+        const matchesStream = stream === 'all' || col.streams.includes(stream);
+        return matchesQ && matchesLoc && matchesStream;
+      });
+
+      renderColleges(filtered);
+    }
+
+    function openModal(id) {
+      const col = seeColleges.find(c => c.id === id);
+      if (!col) return;
+
+      document.getElementById('modalDetail').innerHTML = `
+        <div class="space-y-4 text-xs">
+          <img src="${col.image}" class="w-full h-48 object-cover rounded-xl border border-slate-800">
+          <div>
+            <h3 class="text-2xl font-bold text-white">${col.name}</h3>
+            <p class="text-slate-400">${col.area}, ${col.location}</p>
+          </div>
+
+          <div class="bg-slate-950 p-4 rounded-xl border border-slate-800 space-y-2">
+            <div class="flex justify-between border-b border-slate-800/80 pb-2"><span class="text-slate-400">Fee Structure:</span><span class="text-emerald-400 font-bold">${col.fee}</span></div>
+            <div class="flex justify-between border-b border-slate-800/80 pb-2"><span class="text-slate-400">Min. GPA Eligibility:</span><span class="text-amber-400 font-bold">${col.minGpa}</span></div>
+            <div class="flex justify-between border-b border-slate-800/80 pb-2"><span class="text-slate-400">Entrance Format:</span><span class="text-slate-200">${col.entrance}</span></div>
+            <div class="flex justify-between border-b border-slate-800/80 pb-2"><span class="text-slate-400">Seat Capacity:</span><span class="text-slate-200">${col.seats}</span></div>
+            <div class="flex justify-between"><span class="text-slate-400">Contact Phone:</span><span class="text-slate-200">${col.phone}</span></div>
+          </div>
+
+          <div class="pt-2 text-right">
+            <a href="${col.website}" target="_blank" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold px-4 py-2 rounded-xl transition-all">Visit Official Website &rarr;</a>
+          </div>
+        </div>
+      `;
+      document.getElementById('seeCollegeModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('seeCollegeModal').classList.add('hidden');
+    }
+
+    renderColleges(seeColleges);
+  </script>
+</body>
+</html>

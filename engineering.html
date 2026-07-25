@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Engineering Colleges & IOE Entrance Guide Nepal | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Nav -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">⚙️</div>
+        <a href="../index.html" class="font-extrabold text-xl text-white tracking-tight">Edu<span class="text-blue-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Engineering</span></a>
+      </div>
+      <nav class="hidden md:flex gap-4 text-xs font-semibold">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="engineering.html" class="text-blue-400 border-b-2 border-blue-500 pb-1">Engineering</a>
+        <a href="medical.html" class="text-slate-400 hover:text-white transition">Medical</a>
+        <a href="management.html" class="text-slate-400 hover:text-white transition">Management</a>
+        <a href="it.html" class="text-slate-400 hover:text-white transition">IT & CS</a>
+        <a href="law.html" class="text-slate-400 hover:text-white transition">Law</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
+    
+    <!-- Title Section -->
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <h1 class="text-3xl font-extrabold text-white">Bachelor in Engineering (BE / B.Arch) Portal</h1>
+        <p class="text-slate-400 text-xs mt-1">Explore IOE (TU), KU, Pokhara, and Purbanchal University engineering campuses across Nepal.</p>
+      </div>
+      <div class="bg-blue-950 border border-blue-800 text-blue-300 text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <span>⚡ IOE Full Marks: 140</span>
+        <span class="text-slate-500">|</span>
+        <span>Pass Marks: 42</span>
+      </div>
+    </div>
+
+    <!-- IOE Entrance Quick Breakdown & College Predictor Tool -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span>📐</span> IOE Entrance Exam Mark Distribution (140 Marks)
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          The Institute of Engineering (IOE) entrance exam is mandatory for admission to Pulchowk, Thapathali, WRC, ERC, and all TU-affiliated private engineering colleges.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-blue-400 font-extrabold text-lg">45</span>
+            <span class="text-[11px] text-slate-400">Mathematics</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-emerald-400 font-extrabold text-lg">45</span>
+            <span class="text-[11px] text-slate-400">Physics</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-amber-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">Chemistry</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-purple-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">English</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <span>🎯</span> IOE College Chance Estimator
+          </h3>
+          <p class="text-xs text-slate-400 mt-1">Enter your estimated IOE score to check campus eligibility:</p>
+          
+          <div class="mt-4 space-y-3">
+            <div>
+              <label class="block text-[11px] font-semibold text-slate-300 mb-1">Estimated Marks (Out of 140):</label>
+              <input type="number" id="ioeScore" min="42" max="140" value="85" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
+            </div>
+            <button onclick="calculateIoeEligibility()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-xl text-xs transition">Estimate Admissions</button>
+          </div>
+        </div>
+
+        <div id="ioeResult" class="mt-3 p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-slate-300">
+          Click button to evaluate eligibility based on past cutoffs.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- FILTER BAR -->
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+      <div class="flex flex-wrap gap-2" id="engFilterContainer">
+        <button onclick="filterEng('all')" class="eng-btn bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All Campuses</button>
+        <button onclick="filterEng('IOE-Constituent')" class="eng-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">IOE Government</button>
+        <button onclick="filterEng('IOE-Affiliated')" class="eng-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">IOE Private</button>
+        <button onclick="filterEng('KU')" class="eng-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">Kathmandu Univ (KU)</button>
+        <button onclick="filterEng('Pokhara')" class="eng-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">Pokhara Univ</button>
+      </div>
+
+      <div class="w-full sm:w-64">
+        <input type="text" id="engSearch" onkeyup="searchEngColleges()" placeholder="Search Civil, Computer, Pulchowk..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-blue-500">
+      </div>
+    </div>
+
+    <!-- COLLEGES GRID -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="engGrid"></div>
+
+  </main>
+
+  <script>
+    const engineeringColleges = [
+      {
+        name: "Pulchowk Campus (IOE)",
+        category: "IOE-Constituent",
+        location: "Pulchowk, Lalitpur",
+        courses: ["Civil", "Computer", "Electrical", "Mechanical", "Electronics", "Architecture", "Aerospace"],
+        fees: "NRs. 3,50,000 (Regular: FREE / Full Fee: 3.5L)",
+        seats: 624,
+        cutoff: "Top 500 Rank in IOE Entrance",
+        image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80",
+        desc: "Nepal's premiere government engineering institution under Tribhuvan University offering research-oriented engineering degrees."
+      },
+      {
+        name: "Thapathali Campus (IOE)",
+        category: "IOE-Constituent",
+        location: "Thapathali, Kathmandu",
+        courses: ["Civil", "Computer", "Mechanical", "Automobile", "Industrial", "Architecture"],
+        fees: "NRs. 3,50,000",
+        seats: 384,
+        cutoff: "Top 1200 Rank in IOE Entrance",
+        image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+        desc: "Constituent IOE campus famous for Automobile, Industrial and Mechanical engineering alongside Civil and Computer."
+      },
+      {
+        name: "Kathmandu University (KU School of Engineering)",
+        category: "KU",
+        location: "Dhulikhel, Kavre",
+        courses: ["Computer", "Civil", "Electrical", "Mechanical", "Geomatics", "Chemical"],
+        fees: "NRs. 8,50,000 - 10,50,000",
+        seats: 480,
+        cutoff: "KUCAT CBT Exam Score 500+",
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+        desc: "Autonomous top university in Dhulikhel with state-of-the-art research labs and timely academic calendar."
+      },
+      {
+        name: "Kathmandu Engineering College (KEC)",
+        category: "IOE-Affiliated",
+        location: "Kalimati, Kathmandu",
+        courses: ["Civil", "Computer", "Electrical", "Electronics", "Architecture"],
+        fees: "NRs. 11,50,000 - 13,80,000",
+        seats: 432,
+        cutoff: "IOE Pass Marks (42+)",
+        image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",
+        desc: "First private engineering college affiliated to IOE TU with strong academic discipline and project exhibitions."
+      },
+      {
+        name: "Advanced College of Engineering & Management",
+        category: "IOE-Affiliated",
+        location: "Balkhu, Kathmandu",
+        courses: ["Civil", "Computer", "Electrical", "Electronics"],
+        fees: "NRs. 11,00,000 - 13,50,000",
+        seats: 336,
+        cutoff: "IOE Pass Marks (42+)",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+        desc: "Reputed private TU affiliated college with specialized incubation hubs and tech clubs."
+      },
+      {
+        name: "Paschimanchal Campus (WRC Dharan/Pokhara)",
+        category: "IOE-Constituent",
+        location: "Lamachaur, Pokhara",
+        courses: ["Civil", "Computer", "Electrical", "Geomatics", "Mechanical"],
+        fees: "NRs. 3,50,000",
+        seats: 432,
+        cutoff: "Top 2500 Rank in IOE Entrance",
+        image: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80",
+        desc: "Government constituent campus in Pokhara known for Geomatics and Civil engineering facilities."
+      },
+      {
+        name: "Nepal Engineering College (NEC)",
+        category: "Pokhara",
+        location: "Changunarayan, Bhaktapur",
+        courses: ["Civil", "Computer", "Electrical", "Architecture", "Civil & Rural"],
+        fees: "NRs. 9,80,000 - 12,00,000",
+        seats: 540,
+        cutoff: "Pokhara Entrance Exam",
+        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        desc: "Largest Pokhara University non-profit engineering college situated on a serene hill in Bhaktapur."
+      },
+      {
+        name: "Kantipur Engineering College",
+        category: "IOE-Affiliated",
+        location: "Dhapakhel, Lalitpur",
+        courses: ["Civil", "Computer", "Electronics"],
+        fees: "NRs. 11,20,000 - 13,00,000",
+        seats: 288,
+        cutoff: "IOE Pass Marks (42+)",
+        image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80",
+        desc: "Established private IOE college offering spacious campus layout and robotics programs."
+      }
+    ];
+
+    function renderEngColleges(colleges) {
+      const container = document.getElementById('engGrid');
+      container.innerHTML = colleges.map(c => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 transition flex flex-col">
+          <img src="${c.image}" class="w-full h-40 object-cover" alt="${c.name}">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[10px] bg-blue-500/10 text-blue-400 font-bold px-2 py-0.5 rounded border border-blue-500/20">${c.category}</span>
+                <span class="text-[11px] text-slate-400">📍 ${c.location}</span>
+              </div>
+              <h3 class="font-bold text-white text-base mt-2">${c.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">${c.desc}</p>
+              
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${c.courses.map(crs => `<span class="bg-slate-950 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800">${crs}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="flex justify-between"><span class="text-slate-400">Est. Fee:</span><span class="text-emerald-400 font-bold">${c.fees}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Total Seats:</span><span class="text-white font-semibold">${c.seats} Seats</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Cutoff / Requirement:</span><span class="text-amber-400 font-semibold">${c.cutoff}</span></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterEng(cat) {
+      document.querySelectorAll('#engFilterContainer .eng-btn').forEach(btn => {
+        btn.className = "eng-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold";
+      });
+      event.target.className = "eng-btn bg-blue-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold";
+
+      if(cat === 'all') {
+        renderEngColleges(engineeringColleges);
+      } else {
+        renderEngColleges(engineeringColleges.filter(c => c.category === cat));
+      }
+    }
+
+    function searchEngColleges() {
+      const q = document.getElementById('engSearch').value.toLowerCase();
+      const filtered = engineeringColleges.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.location.toLowerCase().includes(q) || 
+        c.courses.some(crs => crs.toLowerCase().includes(q))
+      );
+      renderEngColleges(filtered);
+    }
+
+    function calculateIoeEligibility() {
+      const score = parseInt(document.getElementById('ioeScore').value);
+      const res = document.getElementById('ioeResult');
+      if (isNaN(score) || score < 42) {
+        res.innerHTML = "<span class='text-red-400 font-bold'>Below Pass Marks (42).</span> Re-take entrance or prepare for private university exams.";
+      } else if (score >= 105) {
+        res.innerHTML = "<span class='text-emerald-400 font-bold'>High chance for Pulchowk Regular (Free)</span> in Civil/Computer/Electronics!";
+      } else if (score >= 85) {
+        res.innerHTML = "<span class='text-emerald-400 font-bold'>Strong chance for Pulchowk Full Fee / Thapathali / WRC</span> across primary disciplines.";
+      } else if (score >= 60) {
+        res.innerHTML = "<span class='text-blue-400 font-bold'>Good chance for constituent campuses (WRC/ERC)</span> or top private TU colleges (KEC/Advanced).";
+      } else {
+        res.innerHTML = "<span class='text-amber-400 font-bold'>Eligible for Private TU Affiliated Colleges</span> (Kalimati KEC, Advanced, Kantipur, etc.).";
+      }
+    }
+
+    // Render initial list
+    renderEngColleges(engineeringColleges);
+  </script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-SEE Stream Recommendation Quiz | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen">
+
+  <nav class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <a href="../index.html" class="w-9 h-9 bg-red-600 rounded-xl flex items-center justify-center font-bold text-white hover:bg-red-500 transition-all">🧭</a>
+      <h1 class="text-lg font-extrabold text-white">Edu<span class="text-red-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Stream Quiz</span></h1>
+    </div>
+    <a href="../index.html" class="text-xs font-semibold text-slate-400 hover:text-white">← Main Portal</a>
+  </nav>
+
+  <main class="max-w-3xl mx-auto p-6 space-y-8">
+
+    <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-6">
+      <h2 class="text-xl font-bold text-white border-b border-slate-800 pb-3">Post-SEE Stream Recommendation Quiz</h2>
+
+      <div class="space-y-4 text-xs" id="quizContainer">
+        <div>
+          <label class="block text-slate-300 font-semibold mb-2">1. What subject did you enjoy the most during Grade 9 and 10?</label>
+          <select id="q1" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white">
+            <option value="science">Mathematics, Science & Computer</option>
+            <option value="mgmt">Accountancy, Economics & Social Studies</option>
+            <option value="law">Nepali, English, Literature & Social Issues</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-slate-300 font-semibold mb-2">2. What is your primary career target after Bachelor's?</label>
+          <select id="q2" class="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-white">
+            <option value="science">Doctor, Engineer, Software Developer, Researcher</option>
+            <option value="mgmt">Entrepreneur, Chartered Accountant, Bank Manager, Hotel Admin</option>
+            <option value="law">Advocate, Judge, Journalist, Diplomat, NGO Director</option>
+          </select>
+        </div>
+
+        <button onclick="evaluateQuiz()" class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 rounded-xl transition-all">Calculate Best Stream Match</button>
+      </div>
+
+      <div id="quizResult" class="hidden p-5 bg-slate-950 border border-slate-800 rounded-xl text-xs space-y-2">
+        <h3 class="text-lg font-bold text-emerald-400" id="recTitle">Recommended Stream</h3>
+        <p class="text-slate-300" id="recBody"></p>
+        <div class="pt-2">
+          <a href="colleges.html" class="inline-block bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg font-semibold">Explore Matching Colleges &rarr;</a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    function evaluateQuiz() {
+      const q1 = document.getElementById('q1').value;
+      const q2 = document.getElementById('q2').value;
+
+      let stream = "+2 Science Stream";
+      let desc = "Your interest in logic, mathematics, and problem-solving makes Science your best fit. This will open doors for Engineering, Medicine, and IT.";
+
+      if (q1 === 'mgmt' || q2 === 'mgmt') {
+        stream = "+2 Management Stream";
+        desc = "Your affinity for business, numbers, and organization points directly toward Management. Great foundation for BBA, CA, and Hotel Management.";
+      } else if (q1 === 'law' || q2 === 'law') {
+        stream = "+2 Law & Humanities Stream";
+        desc = "You enjoy analytical writing, governance, and public communication. Perfect track for 5-Year BALLB or Mass Communication.";
+      }
+
+      document.getElementById('recTitle').innerText = "Recommended: " + stream;
+      document.getElementById('recBody').innerText = desc;
+      document.getElementById('quizResult').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>

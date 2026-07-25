@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Management & CMAT Colleges Directory Nepal | EduCompass</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col">
+
+  <!-- Header Nav -->
+  <header class="border-b border-slate-800 bg-slate-900/90 backdrop-blur sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 bg-amber-600 rounded-lg flex items-center justify-center font-bold text-white">📊</div>
+        <a href="../index.html" class="font-extrabold text-xl text-white tracking-tight">Edu<span class="text-amber-500">Compass</span> <span class="text-xs font-normal text-slate-400">/ Management</span></a>
+      </div>
+      <nav class="hidden md:flex gap-4 text-xs font-semibold">
+        <a href="../index.html" class="text-slate-400 hover:text-white transition">Home</a>
+        <a href="engineering.html" class="text-slate-400 hover:text-white transition">Engineering</a>
+        <a href="medical.html" class="text-slate-400 hover:text-white transition">Medical</a>
+        <a href="management.html" class="text-amber-400 border-b-2 border-amber-500 pb-1">Management</a>
+        <a href="it.html" class="text-slate-400 hover:text-white transition">IT & CS</a>
+        <a href="law.html" class="text-slate-400 hover:text-white transition">Law</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 py-8 space-y-8 flex-1 w-full">
+    
+    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <div>
+        <h1 class="text-3xl font-extrabold text-white">Management & Business Degrees Portal</h1>
+        <p class="text-slate-400 text-xs mt-1">BBA, BBM, BHM, BIM, BTTM, and CA/ACCA degrees under TU (CMAT), KU, Pokhara, and Foreign Affiliation.</p>
+      </div>
+      <div class="bg-amber-950 border border-amber-800 text-amber-300 text-xs px-4 py-2 rounded-xl flex items-center gap-2">
+        <span>📊 TU CMAT: 100 Marks</span>
+        <span class="text-slate-500">|</span>
+        <span>Pass Score: 35 Marks</span>
+      </div>
+    </div>
+
+    <!-- CMAT Breakdown & CA Pathway -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      
+      <div class="lg:col-span-2 bg-slate-900 border border-slate-800 rounded-2xl p-6 space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span>📝</span> TU CMAT Entrance Exam Overview
+        </h2>
+        <p class="text-xs text-slate-300 leading-relaxed">
+          Central Management Admission Test (CMAT) conducted by Faculty of Management, Tribhuvan University is required for admission to BBA, BBM, BHM, BIM, and BTTM programs.
+        </p>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-amber-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">Verbal Ability (English)</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-blue-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">Quantitative Ability (Math)</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-emerald-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">Logical Reasoning</span>
+          </div>
+          <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 text-center">
+            <span class="block text-rose-400 font-extrabold text-lg">25</span>
+            <span class="text-[11px] text-slate-400">General Awareness (GK)</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded">Professional Accounting</span>
+          <h3 class="text-base font-bold text-white mt-2">CA (ICAN / ICAI) & ACCA (UK)</h3>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Interested in Chartered Accountancy? You can enroll directly after +2 (Minimum D+ in each subject). ICAN (Nepal) offers 3 levels: CAP-I, CAP-II, CAP-III.
+          </p>
+        </div>
+        <div class="mt-4 pt-3 border-t border-slate-800 text-xs text-amber-400 font-semibold">
+          High demand in audit firms & corporate finance.
+        </div>
+      </div>
+
+    </div>
+
+    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-slate-900 p-4 rounded-2xl border border-slate-800">
+      <div class="flex flex-wrap gap-2" id="mgmtFilterContainer">
+        <button onclick="filterMgmt('all')" class="mgmt-btn bg-amber-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold">All Colleges</button>
+        <button onclick="filterMgmt('TU-Constituent')" class="mgmt-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">TU Public</button>
+        <button onclick="filterMgmt('TU-Affiliated')" class="mgmt-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">TU Private</button>
+        <button onclick="filterMgmt('KU / Pokhara')" class="mgmt-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold">KU & Pokhara Univ</button>
+      </div>
+
+      <div class="w-full sm:w-64">
+        <input type="text" id="mgmtSearch" onkeyup="searchMgmtColleges()" placeholder="Search Shanker Dev, BBA, Apex..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-500">
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mgmtGrid"></div>
+
+  </main>
+
+  <script>
+    const mgmtColleges = [
+      {
+        name: "Shanker Dev Campus",
+        category: "TU-Constituent",
+        location: "Putalisadak, Kathmandu",
+        courses: ["BBA", "BBM", "BIM", "BBA-Finance", "BBS"],
+        fees: "NRs. 3,80,000 - 4,50,000",
+        cmatScore: "70+ CMAT Marks (High Cutoff)",
+        image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=800&q=80",
+        desc: "Nepal's most famous constituent management campus known for top CMAT scorers and corporate placements."
+      },
+      {
+        name: "Nepal Commerce Campus (NCC)",
+        category: "TU-Constituent",
+        location: "Minbhawan, Kathmandu",
+        courses: ["BBA", "BBM", "BIM", "BTTM"],
+        fees: "NRs. 3,80,000 - 4,20,000",
+        cmatScore: "65+ CMAT Marks",
+        image: "https://images.unsplash.com/photo-1541829070764-84a7d30dd3f3?auto=format&fit=crop&w=800&q=80",
+        desc: "Established public TU campus offering premier BBA and BIM IT management degrees."
+      },
+      {
+        name: "Apex College",
+        category: "KU / Pokhara",
+        location: "Old Baneshwor, Kathmandu",
+        courses: ["BBA", "BBA-BI", "BCIS", "BHM"],
+        fees: "NRs. 7,50,000 - 9,50,000",
+        cmatScore: "Pokhara Entrance / Interview",
+        image: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80",
+        desc: "Leading Pokhara University affiliated business school focused on entrepreneurship and internships."
+      },
+      {
+        name: "Ace Institute of Management",
+        category: "KU / Pokhara",
+        location: "Sinamangal, Kathmandu",
+        courses: ["BBA", "BBA-BI"],
+        fees: "NRs. 8,50,000 - 10,50,000",
+        cmatScore: "Ace Entrance Test + GD/PI",
+        image: "https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&w=800&q=80",
+        desc: "Pioneer Pokhara University management institute with strong corporate mentorship and case studies."
+      },
+      {
+        name: "People's Campus",
+        category: "TU-Affiliated",
+        location: "Paknajol, Kathmandu",
+        courses: ["BBA", "BBM"],
+        fees: "NRs. 5,50,000 - 6,50,000",
+        cmatScore: "CMAT Pass Score (40+)",
+        image: "https://images.unsplash.com/photo-1562774053-701939374585?auto=format&fit=crop&w=800&q=80",
+        desc: "Reputed community-based TU private management college offering quality business education."
+      },
+      {
+        name: "Kathmandu University School of Management (KUSOM)",
+        category: "KU / Pokhara",
+        location: "Balkumari, Lalitpur",
+        courses: ["BBA", "BBIS"],
+        fees: "NRs. 9,00,000",
+        cmatScore: "KUUMAT Entrance Exam",
+        image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+        desc: "Autonomous KU management school highly prestigious for research, business analytics, and global exposure."
+      }
+    ];
+
+    function renderMgmtColleges(colleges) {
+      const container = document.getElementById('mgmtGrid');
+      container.innerHTML = colleges.map(c => `
+        <div class="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition flex flex-col">
+          <img src="${c.image}" class="w-full h-40 object-cover" alt="${c.name}">
+          <div class="p-5 flex-1 flex flex-col justify-between space-y-4">
+            <div>
+              <div class="flex justify-between items-start gap-2">
+                <span class="text-[10px] bg-amber-500/10 text-amber-400 font-bold px-2 py-0.5 rounded border border-amber-500/20">${c.category}</span>
+                <span class="text-[11px] text-slate-400">📍 ${c.location}</span>
+              </div>
+              <h3 class="font-bold text-white text-base mt-2">${c.name}</h3>
+              <p class="text-xs text-slate-400 mt-1 leading-relaxed">${c.desc}</p>
+              
+              <div class="mt-3 flex flex-wrap gap-1">
+                ${c.courses.map(crs => `<span class="bg-slate-950 text-slate-300 text-[10px] px-2 py-0.5 rounded border border-slate-800">${crs}</span>`).join('')}
+              </div>
+            </div>
+
+            <div class="pt-3 border-t border-slate-800 space-y-1.5 text-xs">
+              <div class="flex justify-between"><span class="text-slate-400">Est. Fee:</span><span class="text-emerald-400 font-bold">${c.fees}</span></div>
+              <div class="flex justify-between"><span class="text-slate-400">Entrance Criteria:</span><span class="text-amber-400 font-semibold">${c.cmatScore}</span></div>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterMgmt(cat) {
+      document.querySelectorAll('#mgmtFilterContainer .mgmt-btn').forEach(btn => {
+        btn.className = "mgmt-btn bg-slate-950 border border-slate-800 text-slate-300 hover:bg-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold";
+      });
+      event.target.className = "mgmt-btn bg-amber-600 text-white px-3 py-1.5 rounded-lg text-xs font-semibold";
+
+      if(cat === 'all') {
+        renderMgmtColleges(mgmtColleges);
+      } else {
+        renderMgmtColleges(mgmtColleges.filter(c => c.category === cat));
+      }
+    }
+
+    function searchMgmtColleges() {
+      const q = document.getElementById('mgmtSearch').value.toLowerCase();
+      const filtered = mgmtColleges.filter(c => 
+        c.name.toLowerCase().includes(q) || 
+        c.location.toLowerCase().includes(q) || 
+        c.courses.some(crs => crs.toLowerCase().includes(q))
+      );
+      renderMgmtColleges(filtered);
+    }
+
+    renderMgmtColleges(mgmtColleges);
+  </script>
+</body>
+</html>
